@@ -23,9 +23,9 @@ class PointCloud:
             [0, sin(angle_), cos(angle_)]
         ]),
         Direction.Y: lambda angle_: np.array([
-            [cos(angle_), 0, -sin(angle_)],
+            [cos(angle_), 0, sin(angle_)],
             [0, 1, 0],
-            [sin(angle_), 0, cos(angle_)]
+            [-sin(angle_), 0, cos(angle_)]
         ]),
         Direction.Z: lambda angle_: np.array([
             [cos(angle_), -sin(angle_), 0],
