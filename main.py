@@ -34,7 +34,7 @@ class PointCloud:
         ])
     }
 
-    def __get_rotate_matrix(self, direction, angle):
+    def __get_rotation_matrix(self, direction, angle):
         """ Returns np.array to rotate above direction axis by angle degrees """
 
         angle = radians(angle)
@@ -54,7 +54,7 @@ class PointCloud:
         except Exception as e:
             raise e
 
-    def rotate(self, matrix):
+    def __rotate(self, matrix):
         for i in range(self.__len):
             self.__data[i][0] = matrix.dot(self.__data[i][0])
 
@@ -65,16 +65,16 @@ class PointCloud:
         return (arr for arr, tok in self.__data)
 
     def rotate_x(self, angle=45):
-        r_matrix = self.__get_rotate_matrix(Direction.X, angle)
-        self.rotate(r_matrix)
+        r_matrix = self.__get_rotation_matrix(Direction.X, angle)
+        self.__rotate(r_matrix)
 
     def rotate_y(self, angle=45):
-        r_matrix = self.__get_rotate_matrix(Direction.Y, angle)
-        self.rotate(r_matrix)
+        r_matrix = self.__get_rotation_matrix(Direction.Y, angle)
+        self.__rotate(r_matrix)
 
     def rotate_z(self, angle=45):
-        r_matrix = self.__get_rotate_matrix(Direction.Z, angle)
-        self.rotate(r_matrix)
+        r_matrix = self.__get_rotation_matrix(Direction.Z, angle)
+        self.__rotate(r_matrix)
 
     def save(self):
         hash_ = hashlib.sha1()
