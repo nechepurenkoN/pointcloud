@@ -115,9 +115,9 @@ def main():
         if results.x is not None:
             data.rotate_x(float(results.x))
         if results.y is not None:
-            data.rotate_x(float(results.y))
+            data.rotate_y(float(results.y))
         if results.z is not None:
-            data.rotate_x(float(results.z))
+            data.rotate_z(float(results.z))
 
     try:
         data.save()
